@@ -4,4 +4,7 @@ export default {
     extend: {},
   },
   plugins: [],
+  corePlugins: {
+    preflight: true, // Ensure Tailwind's reset styles are applied
+  },
 };
