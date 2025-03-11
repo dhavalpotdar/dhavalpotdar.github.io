@@ -145,7 +145,7 @@ const courses = [
             >
             {/* Profile Image */}
             <img
-                src="/src/assets/headshot.jpg"
+                src="./public/headshot.jpg"
                 alt="Dhaval Potdar"
                 className="w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 rounded-full border-4 border-gray-700 shadow-lg"
             />
