@@ -28,11 +28,13 @@ a:hover {
 
 body {
   margin: 0;
+  padding: 0;
   min-width: 320px;
   min-height: 100vh;
-  /* Remove or adjust these properties that might cause layout issues */
-  display: flex;
-  place-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #000; /* Pure black */
+  color: #fff; /* White text */
 }
 
 h1 {
