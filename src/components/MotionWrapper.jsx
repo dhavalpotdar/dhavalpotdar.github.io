@@ -1,18 +1,12 @@
 import { motion } from "framer-motion";
 
-// Define the default animation
-const defaultVariants = {
-  hidden: { opacity: 0, scale: 0.95 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.4 } },
-};
-
 const MotionWrapper = ({ children }) => {
   return (
     <motion.div
-      initial="hidden"
-      animate="visible"
-      exit="hidden"
-      variants={defaultVariants}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ duration: 0.5, staggerChildren: 0.2 }}
     >
       {children}
     </motion.div>

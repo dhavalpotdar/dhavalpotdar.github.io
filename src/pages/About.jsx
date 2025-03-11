@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDatabase, faCode, faGraduationCap, faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import MotionWrapper from "../components/MotionWrapper"; // Import the wrapper
@@ -96,12 +97,6 @@ const courses = [
 
 
   const About = () => {
-    // Animation Variants
-    const pageVariants = {
-        hidden: { opacity: 0, scale: 0.95 },
-        visible: { opacity: 1, scale: 1, transition: { duration: 0.4 } },
-    };
-
     const [openDegree, setOpenDegree] = useState(null);
     const [openCourses, setOpenCourses] = useState({});
   
@@ -118,25 +113,61 @@ const courses = [
       }));
     };
   
+    // **Framer Motion Animation Variants**
+    const containerVariants = {
+      hidden: { opacity: 0 },
+      visible: {
+        opacity: 1,
+        transition: {
+          staggerChildren: 0.3, // Controls delay between animations
+        },
+      },
+    };
+  
+    const itemVariants = {
+      hidden: { opacity: 0, y: 20 },
+      visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+    };
+  
     return (
-        <MotionWrapper>
-        <div className="max-w-4xl mx-auto">
+      <MotionWrapper>
+        <motion.div
+          className="max-w-4xl mx-auto"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
           
-          {/* Profile & Title */}
-          <div className="flex flex-col items-center text-center">
+            {/* Profile & Title - Landscape Layout */}
+            <motion.div 
+            className="flex flex-col md:flex-row items-center md:items-start bg-gray-800 p-6 rounded-lg shadow-lg space-x-6"
+            variants={itemVariants}
+            >
+            {/* Profile Image */}
             <img
-              src="/src/assets/headshot.jpg"
-              alt="Dhaval Potdar"
-              className="w-32 h-32 sm:w-40 sm:h-40 rounded-full border-4 border-gray-700 shadow-lg"
+                src="/src/assets/headshot.jpg"
+                alt="Dhaval Potdar"
+                className="w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 rounded-full border-4 border-gray-700 shadow-lg"
             />
-            <h1 className="text-4xl font-bold mt-4">Dhaval Potdar</h1>
-            <p className="text-lg text-gray-400 mt-2">
-              Data Scientist & AI/ML Engineer | Product Data Scientist
-            </p>
-          </div>
+
+            {/* Name & Title */}
+            <div className="text-center md:text-left">
+                <h1 className="text-4xl font-bold">Dhaval Potdar</h1>
+                <p className="text-lg text-gray-400 mt-2">
+                Data Scientist & AI/ML Engineer | Product Data Scientist
+                </p>
+
+                {/* Tag Labels */}
+                <div className="flex flex-wrap gap-2 mt-3">
+                <span className="bg-gray-700 text-sm px-3 py-1 rounded-lg">AI/ML Expert</span>
+                <span className="bg-gray-700 text-sm px-3 py-1 rounded-lg">Data Scientist</span>
+                <span className="bg-gray-700 text-sm px-3 py-1 rounded-lg">MLOps Engineer</span>
+                </div>
+            </div>
+            </motion.div>
   
           {/* Professional Summary */}
-          <div className="mt-10">
+          <motion.div className="mt-10" variants={itemVariants}>
             <h2 className="text-xl font-semibold mb-4 flex items-center">
               <FontAwesomeIcon icon={faDatabase} className="mr-2 text-white text-2xl" />
               Professional Summary
@@ -144,61 +175,55 @@ const courses = [
             <p className="bg-gray-800 p-6 rounded-lg shadow-lg">
               I am a Data Scientist and AI/ML Engineer with a strong background in cloud solutions, large-scale analytics, and generative AI. I specialize in optimizing AI-driven systems and building scalable data pipelines.
             </p>
-          </div>
+          </motion.div>
   
           {/* Technical Skills */}
-          <div className="mt-10">
+          <motion.div className="mt-10" variants={itemVariants}>
             <h2 className="text-xl font-semibold mb-4 flex items-center">
               <FontAwesomeIcon icon={faCode} className="mr-2 text-white text-2xl" />
               Technical Skills
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-gray-800 p-4 rounded-lg">
+              <motion.div className="bg-gray-800 p-4 rounded-lg" variants={itemVariants}>
                 <h3 className="text-lg font-semibold">AI & Machine Learning</h3>
                 <div className="flex flex-wrap gap-2 mt-2">
-                <span className="px-3 py-1 bg-gray-700 rounded-lg text-sm transition-transform transform hover:scale-110">
-                    Neural Networks
-                </span>
-                <span className="px-3 py-1 bg-gray-700 rounded-lg text-sm transition-transform transform hover:scale-110">
-                    Deep Learning
-                </span>
-                <span className="px-3 py-1 bg-gray-700 rounded-lg text-sm transition-transform transform hover:scale-110">
-                    Generative AI
-                </span>
-                <span className="px-3 py-1 bg-gray-700 rounded-lg text-sm transition-transform transform hover:scale-110">
-                    LLM Fine-Tuning
-                </span>
+                  {["Neural Networks", "Deep Learning", "Generative AI", "LLM Fine-Tuning"].map((skill, i) => (
+                    <motion.span
+                      key={i}
+                      className="px-3 py-1 bg-gray-700 rounded-lg text-sm transition-transform transform hover:scale-110"
+                      variants={itemVariants}
+                    >
+                      {skill}
+                    </motion.span>
+                  ))}
                 </div>
-            </div>
-            <div className="bg-gray-800 p-4 rounded-lg">
+              </motion.div>
+              <motion.div className="bg-gray-800 p-4 rounded-lg" variants={itemVariants}>
                 <h3 className="text-lg font-semibold">Cloud & MLOps</h3>
                 <div className="flex flex-wrap gap-2 mt-2">
-                <span className="px-3 py-1 bg-gray-700 rounded-lg text-sm transition-transform transform hover:scale-110">
-                    AWS SageMaker
-                </span>
-                <span className="px-3 py-1 bg-gray-700 rounded-lg text-sm transition-transform transform hover:scale-110">
-                    Docker
-                </span>
-                <span className="px-3 py-1 bg-gray-700 rounded-lg text-sm transition-transform transform hover:scale-110">
-                    CI/CD
-                </span>
-                <span className="px-3 py-1 bg-gray-700 rounded-lg text-sm transition-transform transform hover:scale-110">
-                    Kubernetes
-                </span>
+                  {["AWS SageMaker", "Docker", "CI/CD", "Kubernetes"].map((skill, i) => (
+                    <motion.span
+                      key={i}
+                      className="px-3 py-1 bg-gray-700 rounded-lg text-sm transition-transform transform hover:scale-110"
+                      variants={itemVariants}
+                    >
+                      {skill}
+                    </motion.span>
+                  ))}
                 </div>
+              </motion.div>
             </div>
-            </div>
-          </div>
+          </motion.div>
   
           {/* Education Section */}
-          <div className="mt-10">
+          <motion.div className="mt-10" variants={itemVariants}>
             <h2 className="text-2xl font-semibold flex items-center">
               <FontAwesomeIcon icon={faGraduationCap} className="mr-3 text-white text-3xl" />
               Education
             </h2>
   
             {courses.map((course, degreeIndex) => (
-              <div key={degreeIndex} className="bg-gray-800 p-6 rounded-lg shadow-lg mt-6">
+              <motion.div key={degreeIndex} className="bg-gray-800 p-6 rounded-lg shadow-lg mt-6" variants={itemVariants}>
                 {/* Degree & Institution */}
                 <div className="flex justify-between items-center cursor-pointer" onClick={() => toggleDegree(degreeIndex)}>
                   <div>
@@ -211,57 +236,36 @@ const courses = [
                 {/* Honors (ALWAYS VISIBLE) */}
                 <div className="mt-2 flex flex-wrap gap-2">
                   {course.honors.map((honor, i) => (
-                    <span key={i} className="bg-gray-700 text-sm px-3 py-1 rounded-lg">{honor}</span>
+                    <motion.span key={i} className="bg-gray-700 text-sm px-3 py-1 rounded-lg" variants={itemVariants}>
+                      {honor}
+                    </motion.span>
                   ))}
-                </div>
-
-                {/* GPA */}
-                <div className="mt-2">
-                    <span className="bg-gray-700 text-sm px-3 py-1 rounded-lg">GPA: {course.gpa}</span>
                 </div>
   
                 {/* Expandable Content */}
                 {openDegree === degreeIndex && (
                   <>
-
-  
                     {/* Coursework List */}
-                    <div className="mt-4">
+                    <motion.div className="mt-4" variants={itemVariants}>
                       {course.details.map((detail, courseIndex) => (
-                        <div key={courseIndex} className="bg-gray-700 p-3 mt-2 rounded-lg shadow-sm">
-                          {/* Course Title Toggle */}
+                        <motion.div key={courseIndex} className="bg-gray-700 p-3 mt-2 rounded-lg shadow-sm" variants={itemVariants}>
                           <div className="flex justify-between items-center cursor-pointer" onClick={() => toggleCourse(degreeIndex, courseIndex)}>
                             <h4 className="text-md font-semibold text-gray-300">{detail.name}</h4>
-                            <FontAwesomeIcon
-                              icon={openCourses[`${degreeIndex}-${courseIndex}`] ? faChevronUp : faChevronDown}
-                              className="text-gray-400"
-                            />
+                            <FontAwesomeIcon icon={openCourses[`${degreeIndex}-${courseIndex}`] ? faChevronUp : faChevronDown} className="text-gray-400" />
                           </div>
-  
-                          {/* Course Description (Expandable) */}
                           {openCourses[`${degreeIndex}-${courseIndex}`] && (
                             <p className="text-gray-400 text-sm mt-2">{detail.description}</p>
                           )}
-                        </div>
+                        </motion.div>
                       ))}
-                    </div>
-  
-                    {/* Activities & Societies */}
-                    <div className="mt-4">
-                      <h4 className="text-lg font-semibold text-gray-300">Activities & Societies</h4>
-                      <ul className="list-disc list-inside text-gray-400">
-                        {course.activities.map((activity, i) => (
-                          <li key={i} className="text-sm">{activity}</li>
-                        ))}
-                      </ul>
-                    </div>
+                    </motion.div>
                   </>
                 )}
-              </div>
+              </motion.div>
             ))}
-          </div>
-        </div>
-        </MotionWrapper>
+          </motion.div>
+        </motion.div>
+      </MotionWrapper>
     );
   };
   
