@@ -1,4 +1,5 @@
 const About = () => {
+    console.log("Rendering About Page");
     return (
       <section id="about" className="py-20 bg-gray-800 text-white text-center">
         <h2 className="text-3xl font-semibold">About Me</h2>
