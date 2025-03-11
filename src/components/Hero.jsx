@@ -27,13 +27,13 @@ const Hero = () => {
         variants={itemVariants}
         src="https://dhavalpotdar.github.io/headshot.jpg"
         alt="Dhaval Potdar"
-        className="w-32 h-32 sm:w-40 sm:h-40 rounded-full border-4 border-gray-700 shadow-lg"
+        className="w-56 h-56 sm:w-72 sm:h-72 rounded-full border-4 border-gray-700 shadow-lg"
       />
-      <motion.h1 variants={itemVariants} className="text-4xl font-bold mt-4">
+      <motion.h1 variants={itemVariants} className="text-6xl font-bold mt-4">
         Hi, I'm Dhaval Potdar
       </motion.h1>
-      <motion.p variants={itemVariants} className="text-lg text-gray-400 mt-2">
-        Data Scientist | AI/ML Engineer | Product Data Scientist
+      <motion.p variants={itemVariants} className="text-xl text-gray-400 mt-2">
+        Data Scientist | AI/ML Engineer | Generative AI
       </motion.p>
       <motion.div variants={itemVariants} className="mt-6 flex justify-center space-x-4">
         <a

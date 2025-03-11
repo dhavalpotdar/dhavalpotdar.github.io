@@ -38,7 +38,7 @@ const Navbar = () => {
       <div className="space-x-6">
         <Link to="/" className="hover:text-gray-400">Home</Link>
         <Link to="/about" className="hover:text-gray-400">About</Link>
-        <a href="#projects" className="hover:text-gray-400 scroll-link">Projects</a>
+        <Link to="/projects" className="hover:text-gray-400">Projects</Link>
         <a href="#contact" className="hover:text-gray-400 scroll-link">Contact</a>
       </div>
     </nav>
