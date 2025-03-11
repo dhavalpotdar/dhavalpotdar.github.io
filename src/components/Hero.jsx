@@ -25,7 +25,7 @@ const Hero = () => {
     >
       <motion.img
         variants={itemVariants}
-        src="./headshot.jpg"
+        src="https://dhavalpotdar.github.io/headshot.jpg"
         alt="Dhaval Potdar"
         className="w-32 h-32 sm:w-40 sm:h-40 rounded-full border-4 border-gray-700 shadow-lg"
       />
