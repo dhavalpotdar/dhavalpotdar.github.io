@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { faCogs } from "@fortawesome/free-solid-svg-icons"; // Import the gear icon
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDatabase, faCode, faGraduationCap, faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
+import { faUserTie, faCode, faGraduationCap, faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import MotionWrapper from "../components/MotionWrapper"; // Import the wrapper
+import Skills from "../components/Skills";
+import Footer from "../components/Footer"; // Import Footer
+
 
 const courses = [
     {
@@ -65,9 +69,9 @@ const courses = [
       ]
     },
     {
-      title: "Bachelor's in Electrical Engineering",
+      title: "Bachelor's in Electrical and Electronics Engineering",
       institution: "University of Mumbai",
-      year: "[Graduation Year]",
+      year: "2015 - 2019",
       gpa: "3.85",
       honors: ["Summa Cum Laude", "Best Final Year Project"],
       activities: [
@@ -97,6 +101,10 @@ const courses = [
 
 
   const About = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0); // Forces the page to scroll to the top on load
+      }, [])
+    
     const [openDegree, setOpenDegree] = useState(null);
     const [openCourses, setOpenCourses] = useState({});
   
@@ -140,7 +148,7 @@ const courses = [
           
             {/* Profile & Title - Landscape Layout */}
             <motion.div 
-            className="flex flex-col md:flex-row items-center md:items-start bg-gray-800 p-6 rounded-lg shadow-lg space-x-6"
+            className="flex flex-col md:flex-row items-center md:items-start bg-black text-white p-6 rounded-lg shadow-lg space-x-6"
             variants={itemVariants}
             >
             {/* Profile Image */}
@@ -167,104 +175,89 @@ const courses = [
             </motion.div>
   
           {/* Professional Summary */}
-          <motion.div className="mt-10" variants={itemVariants}>
-            <h2 className="text-xl font-semibold mb-4 flex items-center">
-              <FontAwesomeIcon icon={faDatabase} className="mr-2 text-white text-2xl" />
-              Professional Summary
+            <motion.div className="mt-10 bg-black border border-gray-700 p-6 rounded-lg shadow-lg" variants={itemVariants}>
+            <h2 className="text-2xl font-semibold mb-4 flex items-center">
+                <FontAwesomeIcon icon={faUserTie} className="mr-2 text-white text-2xl" />
+                Professional Summary
             </h2>
-            <p className="bg-gray-800 p-6 rounded-lg shadow-lg">
-              I am a Data Scientist and AI/ML Engineer with a strong background in cloud solutions, large-scale analytics, and generative AI. I specialize in optimizing AI-driven systems and building scalable data pipelines.
+            <p className="text-gray-400">
+                I am a Data Scientist and AI/ML Engineer with a strong background in cloud solutions, large-scale analytics, and generative AI. 
+                I specialize in optimizing AI-driven systems and building scalable data pipelines.
             </p>
-          </motion.div>
+            </motion.div>
   
           {/* Technical Skills */}
-          <motion.div className="mt-10" variants={itemVariants}>
-            <h2 className="text-xl font-semibold mb-4 flex items-center">
-              <FontAwesomeIcon icon={faCode} className="mr-2 text-white text-2xl" />
-              Technical Skills
+            <motion.div className="mt-10 border border-gray-700 bg-black p-6 rounded-lg shadow-lg" variants={itemVariants}>
+            <h2 className="text-2xl font-semibold mb-4 flex items-center">
+                <FontAwesomeIcon icon={faCogs} className="mr- text-white text-2xl" /> {/* Changed icon */}
+                Technical Skills
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <motion.div className="bg-gray-800 p-4 rounded-lg" variants={itemVariants}>
-                <h3 className="text-lg font-semibold">AI & Machine Learning</h3>
-                <div className="flex flex-wrap gap-2 mt-2">
-                  {["Neural Networks", "Deep Learning", "Generative AI", "LLM Fine-Tuning"].map((skill, i) => (
-                    <motion.span
-                      key={i}
-                      className="px-3 py-1 bg-gray-700 rounded-lg text-sm transition-transform transform hover:scale-110"
-                      variants={itemVariants}
-                    >
-                      {skill}
-                    </motion.span>
-                  ))}
-                </div>
-              </motion.div>
-              <motion.div className="bg-gray-800 p-4 rounded-lg" variants={itemVariants}>
-                <h3 className="text-lg font-semibold">Cloud & MLOps</h3>
-                <div className="flex flex-wrap gap-2 mt-2">
-                  {["AWS SageMaker", "Docker", "CI/CD", "Kubernetes"].map((skill, i) => (
-                    <motion.span
-                      key={i}
-                      className="px-3 py-1 bg-gray-700 rounded-lg text-sm transition-transform transform hover:scale-110"
-                      variants={itemVariants}
-                    >
-                      {skill}
-                    </motion.span>
-                  ))}
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
+            <Skills />
+            </motion.div>
   
           {/* Education Section */}
-          <motion.div className="mt-10" variants={itemVariants}>
-            <h2 className="text-2xl font-semibold flex items-center">
-              <FontAwesomeIcon icon={faGraduationCap} className="mr-3 text-white text-3xl" />
-              Education
-            </h2>
-  
-            {courses.map((course, degreeIndex) => (
-              <motion.div key={degreeIndex} className="bg-gray-800 p-6 rounded-lg shadow-lg mt-6" variants={itemVariants}>
-                {/* Degree & Institution */}
-                <div className="flex justify-between items-center cursor-pointer" onClick={() => toggleDegree(degreeIndex)}>
-                  <div>
-                    <h3 className="text-xl font-bold">{course.title}</h3>
-                    <p className="text-gray-400">{course.institution} <span className="text-gray-500">| {course.year}</span></p>
-                  </div>
-                  <FontAwesomeIcon icon={openDegree === degreeIndex ? faChevronUp : faChevronDown} className="text-gray-300" />
-                </div>
-  
-                {/* Honors (ALWAYS VISIBLE) */}
-                <div className="mt-2 flex flex-wrap gap-2">
-                  {course.honors.map((honor, i) => (
-                    <motion.span key={i} className="bg-gray-700 text-sm px-3 py-1 rounded-lg" variants={itemVariants}>
-                      {honor}
-                    </motion.span>
-                  ))}
-                </div>
-  
-                {/* Expandable Content */}
-                {openDegree === degreeIndex && (
-                  <>
-                    {/* Coursework List */}
-                    <motion.div className="mt-4" variants={itemVariants}>
-                      {course.details.map((detail, courseIndex) => (
-                        <motion.div key={courseIndex} className="bg-gray-700 p-3 mt-2 rounded-lg shadow-sm" variants={itemVariants}>
-                          <div className="flex justify-between items-center cursor-pointer" onClick={() => toggleCourse(degreeIndex, courseIndex)}>
-                            <h4 className="text-md font-semibold text-gray-300">{detail.name}</h4>
-                            <FontAwesomeIcon icon={openCourses[`${degreeIndex}-${courseIndex}`] ? faChevronUp : faChevronDown} className="text-gray-400" />
-                          </div>
-                          {openCourses[`${degreeIndex}-${courseIndex}`] && (
-                            <p className="text-gray-400 text-sm mt-2">{detail.description}</p>
-                          )}
-                        </motion.div>
-                      ))}
-                    </motion.div>
-                  </>
-                )}
-              </motion.div>
-            ))}
-          </motion.div>
+          {/* Education Section */}
+        <motion.div className="mt-10 border border-gray-700 bg-black p-6 rounded-lg shadow-lg" variants={itemVariants}>
+        <h2 className="text-2xl font-semibold flex items-center">
+            <FontAwesomeIcon icon={faGraduationCap} className="mr-3 text-white text-3xl" />
+            Education
+        </h2>
+
+  {courses.map((course, degreeIndex) => (
+    <motion.div 
+      key={degreeIndex} 
+      className="border border-gray-700 bg-black p-6 rounded-lg shadow-lg mt-6"
+      variants={itemVariants}
+    >
+      {/* Degree & Institution */}
+      <div className="mb-3">
+        <h3 className="text-xl font-bold">{course.title}</h3>
+        <p className="text-gray-400">
+          {course.institution} <span className="text-gray-500">| {course.year}</span>
+        </p>
+      </div>
+    
+    
+      <p>Coursework (click to see details):</p>
+      {/* <div className="mt-2 flex flex-wrap gap-2">
+        {course.honors.map((honor, i) => (
+          <span key={i} className="bg-gray-800 text-sm px-3 py-1 rounded-lg text-gray-300 border border-gray-600">
+            {honor}
+          </span>
+        ))}
+      </div> */}
+
+      {/* Coursework List - Styled as Tags */}
+      <div className="mt-4 flex flex-wrap gap-2">
+        {course.details.map((detail, courseIndex) => {
+          const currentKey = `${degreeIndex}-${courseIndex}`; // Ensure string key
+          return (
+            <div 
+              key={courseIndex} 
+              className={`bg-black text-gray-300 px-3 py-1 rounded-lg border border-gray-600 text-sm cursor-pointer transition duration-200 hover:bg-gray-700 
+                ${openCourses === currentKey ? "bg-gray-700" : ""}`}  // Highlight selected item
+              onClick={() => setOpenCourses(openCourses === currentKey ? null : currentKey)}
+            >
+              {detail.name}
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Course Descriptions - Show Only if Expanded */}
+      {typeof openCourses === "string" && openCourses.includes(`${degreeIndex}-`) && (
+        <motion.div className="mt-4 bg-black p-4 rounded-lg border border-gray-600" variants={itemVariants}>
+          <p className="text-gray-400 text-sm">
+            {course.details.find((detail, courseIndex) => openCourses === `${degreeIndex}-${courseIndex}`)?.description}
+          </p>
         </motion.div>
+      )}
+    </motion.div>
+  ))}
+</motion.div>
+        
+      </motion.div>
+        <Footer />
       </MotionWrapper>
     );
   };

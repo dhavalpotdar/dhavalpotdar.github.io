@@ -33,13 +33,12 @@ const Navbar = () => {
   }, [location, navigate]);
 
   return (
-    <nav className="flex justify-between items-center p-6 bg-gray-900 text-white">
-      <h1 className="text-xl font-bold">Dhaval Potdar | Portfolio</h1>
+    <nav className="flex justify-between items-center p-6 bg-gradient-to-b from-black via-gray-900 to-black text-white shadow-lg">
+      <h1 className="text-xl font-bold text-white">Dhaval Potdar | Portfolio</h1>
       <div className="space-x-6">
-        <Link to="/" className="hover:text-gray-400">Home</Link>
-        <Link to="/about" className="hover:text-gray-400">About</Link>
-        <Link to="/projects" className="hover:text-gray-400">Projects</Link>
-        <a href="#contact" className="hover:text-gray-400 scroll-link">Contact</a>
+        <Link to="/" className="text-white hover:text-gray-400">Home</Link>
+        <Link to="/about" className="text-white hover:text-gray-400">About</Link>
+        <Link to="/projects" className="text-white hover:text-gray-400">Projects</Link>
       </div>
     </nav>
   );

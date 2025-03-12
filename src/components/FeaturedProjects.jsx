@@ -1,52 +1,160 @@
-const projects = [
+import { motion } from "framer-motion";
+import { FaGithub, FaYoutube, FaFilePdf, FaBook } from "react-icons/fa"; // Import icons
+import { Link } from "react-router-dom";
+
+const featuredProjects = [
   {
-    title: "AI Document Summarizer",
-    description: "An AI-powered tool for summarizing research papers.",
-    tags: ["NLP", "Python", "Transformers"],
-    image: "/images/ai_summarizer.png",
-    link: "#"
+    title: "MS Capstone: Text to Image Generative AI Safety with Meta",
+    description: "This study analyzes public datasets for T2I model safety, identifying gaps in harm coverage, bias, and ethical risks to improve dataset selection and model robustness. I reduced non-compliant output by 15% for Meta’s Emu diffusion models by curating 120K adversarial prompts and training content moderation classifiers. Additionally, I’m leading a large-scale crowdsourcing study on multilingual T2I safety, designing a full-stack platform to test 8 SOTA models for cultural biases across 10 languages.",
+    tags: ["Gen AI Safety", "Crowdsourcing"],
+    // github: "https://github.com/dhavalpotdar/interpretable-churn-prediction",
+    image: "/assets/projects/Meta-Logo.png",
+    publication: "https://ieeexplore.ieee.org/document/10877814"
   },
   {
-    title: "Autonomous Drone Navigation",
-    description: "A reinforcement learning-based drone navigation system.",
-    tags: ["RL", "TensorFlow", "ROS"],
-    image: "/images/drone_navigation.png",
-    link: "#"
+    title: "Academic Chatbot using Graph RAG",
+    description:
+      "Duke ProfMatch is an AI-powered academic discovery tool that leverages Graph Retrieval-Augmented Generation (RAG) to help Duke students find professors aligned with their research interests. It integrates entity extraction, knowledge graph construction, and vector search using Neo4j to deliver intelligent faculty recommendations. The platform features an interactive graph-based UI, enhancing research exploration and engagement.",
+    tags: ["Generative AI", "Graph RAG", "Neo 4j"],
+    youtube: "https://youtu.be/z67WamqcfpY?si=jRWmJvSr464ZZUk5", // Only YouTube link
+    image: "/assets/projects/Duke ProfMatch.webp",
   },
   {
-    title: "Financial Forecasting Dashboard",
-    description: "A dashboard that predicts stock trends using ML models.",
-    tags: ["Finance", "Time Series", "Dash"],
-    image: "/images/finance_dashboard.png",
-    link: "#"
+    title: "Interpretable X-Ray Classification with ProtoTree",
+    description: "Interpretable X-Ray Classification leverages the Neural Prototype Tree (ProtoTree) to enhance model transparency in chest X-ray diagnostics. Unlike traditional CNN-based models that act as black boxes, ProtoTree integrates decision tree-based interpretability into its deep learning pipeline, enabling clinicians to understand why a model reaches a diagnosis. By improving model interpretability, this project supports faster, more reliable decision-making in healthcare, aiding radiologists in early disease detection while reducing diagnostic uncertainty.",
+    tags: ["PyTorch", "CNN", "Soft Decision Trees"],
+    github: "https://github.com/dhavalpotdar/prototree", // Only GitHub link
+    image: "/assets/projects/Interpretable X-Ray.webp",
+    report: "https://github.com/dhavalpotdar/prototree/blob/main/IDS705%20Final%20Project%20-%20Interpretable%20Image%20Classification.pdf"
   }
 ];
 
+// Framer Motion Variants for staggered loading
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.3, // Delays each child animation
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+
 const FeaturedProjects = () => {
   return (
-    <section id="featured-projects" className="py-12 bg-gray-900 text-white">
-      <h2 className="text-4xl font-bold text-center mt-12">Featured Projects</h2>
+    <section
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      className="bg-black text-white p-6 md:p-12"
+    >
+      <h2 className="text-5xl font-bold text-center">Featured Projects</h2>
       <p className="text-gray-400 mt-2 text-lg text-center">
-        A selection of my recent work in AI & Data Science.
+        A selection of my top projects in AI & Data Science.
       </p>
-      <div className="grid md:grid-cols-3 gap-6 mt-6 max-w-6xl mx-auto">
-        {projects.map((project, index) => (
-          <div key={index} className="bg-gray-800 p-6 rounded-lg shadow-lg">
-            <img src={project.image} alt={project.title} className="rounded-lg mb-4 w-full h-40 object-cover" />
+      <motion.div
+        className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 max-w-6xl mx-auto"
+        variants={containerVariants}
+      >
+        {featuredProjects.map((project, index) => (
+          <motion.div
+            key={index}
+            className="border border-gray-700 bg-black p-6 rounded-lg shadow-lg flex flex-col"
+            variants={itemVariants}
+          >
+            {/* Project Image */}
+            <img
+              src={project.image}
+              alt={project.title}
+              className="w-full h-48 object-cover rounded-lg mb-4 image-hover"
+            />
+
+            {/* Project Details */}
             <h3 className="text-xl font-bold">{project.title}</h3>
             <p className="text-gray-400 mt-2">{project.description}</p>
+
+            {/* Tags */}
             <div className="mt-4 flex flex-wrap gap-2">
               {project.tags.map((tag, i) => (
-                <span key={i} className="bg-gray-700 px-2 py-1 rounded-lg text-sm text-blue-400">
+                <span
+                  key={i}
+                  className="bg-black border border-gray-700 px-3 py-1 rounded-lg text-sm text-gray-400 tag-hover"
+                >
                   {tag}
                 </span>
               ))}
             </div>
-            <a href={project.link} className="block mt-4 text-blue-400 hover:text-blue-500">View Project</a>
-          </div>
+
+            {/* Conditional Links Section */}
+            <div className="mt-4 flex space-x-4 flex-wrap">
+              {project.github && (
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 text-blue-400 hover:text-blue-500"
+                >
+                  <FaGithub className="text-2xl" />
+                  <span>GitHub</span>
+                </a>
+              )}
+              {project.youtube && (
+                <a
+                  href={project.youtube}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 text-red-400 hover:text-red-500"
+                >
+                  <FaYoutube className="text-2xl" />
+                  <span>YouTube</span>
+                </a>
+              )}
+              {project.report && (
+                <a
+                  href={project.report}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 text-green-400 hover:text-green-500"
+                >
+                  <FaFilePdf className="text-2xl" />
+                  <span>Project Report</span>
+                </a>
+              )}
+              {project.publication && (
+                <a
+                  href={project.publication}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 text-yellow-400 hover:text-yellow-500"
+                >
+                  <FaBook className="text-2xl" />
+                  <span>Publication</span>
+                </a>
+              )}
+            </div>
+
+            
+          </motion.div>
+          
         ))}
-      </div>
+      </motion.div>
+
+      {/* View All Projects Button - At the Bottom */}
+    <div className="mt-10 text-center">
+      <Link
+        to="/projects"
+        className="px-6 py-3 bg-white text-black font-medium rounded-lg shadow-md transition hover:bg-gray-200"
+      >
+        View All Projects →
+      </Link>
+    </div>
     </section>
+    
   );
 };
 

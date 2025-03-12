@@ -1,8 +1,19 @@
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import MotionWrapper from "../components/MotionWrapper";
-import { FaGithub, FaYoutube, FaFilePdf } from "react-icons/fa"; // Import PDF icon
+import { FaGithub, FaYoutube, FaFilePdf, FaBook } from "react-icons/fa"; // Import PDF icon
+import Footer from "../components/Footer"; // Import Footer
+
 
 const projects = [
+    {
+        title: "MS Capstone: Text to Image Generative AI Safety with Meta",
+        description: "This study analyzes public datasets for T2I model safety, identifying gaps in harm coverage, bias, and ethical risks to improve dataset selection and model robustness. I reduced non-compliant output by 15% for Meta’s Emu diffusion models by curating 120K adversarial prompts and training content moderation classifiers. Additionally, I’m leading a large-scale crowdsourcing study on multilingual T2I safety, designing a full-stack platform to test 8 SOTA models for cultural biases across 10 languages.",
+        tags: ["Gen AI Safety", "Crowdsourcing"],
+        // github: "https://github.com/dhavalpotdar/interpretable-churn-prediction",
+        image: "/assets/projects/Meta-Logo.png",
+        publication: "https://ieeexplore.ieee.org/document/10877814"
+        },
   {
     title: "Academic Chatbot using Graph RAG",
     description:
@@ -64,17 +75,20 @@ const itemVariants = {
 };
 
 const Projects = () => {
+    useEffect(() => {
+            window.scrollTo(0, 0); // Forces the page to scroll to the top on load
+          }, [])
     return (
       <MotionWrapper>
         <motion.section
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="min-h-screen bg-gray-900 text-white p-6 md:p-12"
+          className="min-h-screen bg-black text-white p-6 md:p-12"
         >
           <h2 className="text-5xl font-bold text-center">Projects</h2>
           <p className="text-gray-400 mt-2 text-lg text-center">
-            A collection of my featured data science and AI/ML projects.
+            A collection of my documented AI/ML projects.
           </p>
           <motion.div
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 max-w-6xl mx-auto"
@@ -83,14 +97,14 @@ const Projects = () => {
             {projects.map((project, index) => (
               <motion.div
                 key={index}
-                className="bg-gray-800 p-6 rounded-lg shadow-lg flex flex-col"
+                className="border border-gray-700 bg-black p-6 rounded-lg shadow-lg flex flex-col"
                 variants={itemVariants}
               >
                 {/* Project Image */}
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-48 object-cover rounded-lg mb-4"
+                  className="w-full h-48 object-cover rounded-lg mb-4 image-hover"
                 />
   
                 {/* Project Details */}
@@ -98,11 +112,11 @@ const Projects = () => {
                 <p className="text-gray-400 mt-2">{project.description}</p>
   
                 {/* Tags */}
-                <div className="mt-4">
+                <div className="flex flex-wrap gap-3 mt-2">
                   {project.tags.map((tag, i) => (
                     <span
                       key={i}
-                      className="bg-gray-700 px-2 py-1 rounded-lg text-sm text-blue-400 mr-2"
+                      className="bg-black border border-gray-700 px-3 py-1 rounded-lg text-sm text-gray-400 tag-hover"
                     >
                       {tag}
                     </span>
@@ -110,45 +124,57 @@ const Projects = () => {
                 </div>
   
                 {/* Conditional Links Section */}
-                <div className="mt-4 flex space-x-4">
-                  {project.github && (
+                <div className="mt-4 flex space-x-4 flex-wrap">
+                {project.github && (
                     <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center space-x-2 text-blue-400 hover:text-blue-500"
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-2 text-blue-400 hover:text-blue-500"
                     >
-                      <FaGithub className="text-2xl" />
-                      <span>GitHub</span>
+                    <FaGithub className="text-2xl" />
+                    <span>GitHub</span>
                     </a>
-                  )}
-                  {project.youtube && (
+                )}
+                {project.youtube && (
                     <a
-                      href={project.youtube}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center space-x-2 text-red-400 hover:text-red-500"
+                    href={project.youtube}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-2 text-red-400 hover:text-red-500"
                     >
-                      <FaYoutube className="text-2xl" />
-                      <span>YouTube</span>
+                    <FaYoutube className="text-2xl" />
+                    <span>YouTube</span>
                     </a>
-                  )}
-                  {project.report && (
+                )}
+                {project.report && (
                     <a
-                      href={project.report}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center space-x-2 text-green-400 hover:text-green-500"
+                    href={project.report}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-2 text-green-400 hover:text-green-500"
                     >
-                      <FaFilePdf className="text-2xl" />
-                      <span>Project Report</span>
+                    <FaFilePdf className="text-2xl" />
+                    <span>Project Report</span>
                     </a>
-                  )}
+                )}
+                {project.publication && (
+                    <a
+                    href={project.publication}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-2 text-yellow-400 hover:text-yellow-500"
+                    >
+                    <FaBook className="text-2xl" />
+                    <span>Publication</span>
+                    </a>
+                )}
                 </div>
               </motion.div>
             ))}
           </motion.div>
         </motion.section>
+        <Footer />
       </MotionWrapper>
     );
   };

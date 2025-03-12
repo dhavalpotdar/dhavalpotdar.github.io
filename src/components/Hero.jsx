@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -16,12 +17,14 @@ const itemVariants = {
 };
 
 const Hero = () => {
+  const navigate = useNavigate(); // Hook for navigation
+
   return (
     <motion.section
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="h-screen flex flex-col items-center justify-center text-center bg-gray-900 text-white"
+      className="h-screen flex flex-col items-center justify-center text-center bg-black text-white"
     >
       <motion.img
         variants={itemVariants}
@@ -35,19 +38,24 @@ const Hero = () => {
       <motion.p variants={itemVariants} className="text-xl text-gray-400 mt-2">
         Data Scientist | AI/ML Engineer | Generative AI
       </motion.p>
+
+      {/* Buttons Section */}
       <motion.div variants={itemVariants} className="mt-6 flex justify-center space-x-4">
+        {/* Email Me Button */}
         <a
-          href="#contact"
-          className="px-6 py-3 bg-white text-black font-medium rounded-lg shadow-md transition hover:bg-gray-200 scroll-link"
+          href="mailto:youremail@example.com"
+          className="px-6 py-3 bg-white text-black font-medium rounded-lg shadow-md transition hover:bg-blue-700"
         >
-          Get in Touch
+          Email Me
         </a>
-        <a
-          href="#projects"
-          className="px-6 py-3 border border-white text-white font-medium rounded-lg shadow-md transition hover:bg-gray-800 scroll-link"
+
+        {/* View Projects Button */}
+        <button
+          onClick={() => navigate("/projects")}
+          className="px-6 py-3 border border-white text-white font-medium rounded-lg shadow-md transition hover:bg-gray-800"
         >
           View Projects
-        </a>
+        </button>
       </motion.div>
     </motion.section>
   );
