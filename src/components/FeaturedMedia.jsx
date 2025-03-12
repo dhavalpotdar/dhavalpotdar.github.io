@@ -48,7 +48,7 @@ const featuredMedia = [
 
   const FeaturedMedia = () => {
     return (
-      <section className="w-full bg-black text-white py-12">
+      <section id="featured-media" className="w-full bg-black text-white py-12">
         <h2 className="text-5xl font-bold text-center">Highlights</h2>
         <p className="text-gray-400 mt-2 text-lg text-center">
           Here are the works I'm most proud of...

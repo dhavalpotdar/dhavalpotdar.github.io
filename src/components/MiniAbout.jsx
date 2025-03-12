@@ -7,7 +7,7 @@ import Education from "./EducationData"; // Import the updated Education compone
 
 const MiniAbout = () => {
   return (
-    <section className="bg-black text-white py-12 px-6 md:px-12">
+    <section id="mini-about" className="bg-black text-white py-12 px-6 md:px-12">
       <div className="max-w-5xl mx-auto">
         {/* About Me Section */}
         <div className="text-center">
