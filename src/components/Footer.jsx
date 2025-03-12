@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <>
       {/* Full-width Divider Line */}
-      <hr className="border-gray-700 w-full mb-6" />
+      <hr className="border-gray-700 w-full mt-12 mb-6" />
 
       <footer className="bg-black text-white py-6">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between px-6 md:px-12">

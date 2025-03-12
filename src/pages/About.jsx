@@ -162,14 +162,14 @@ const courses = [
             <div className="text-center md:text-left">
                 <h1 className="text-4xl font-bold">Dhaval Potdar</h1>
                 <p className="text-lg text-gray-400 mt-2">
-                Data Scientist & AI/ML Engineer | Product Data Scientist
+                ML Geek and a Generative AI Evangelist
                 </p>
 
                 {/* Tag Labels */}
                 <div className="flex flex-wrap gap-2 mt-3">
-                <span className="bg-gray-700 text-sm px-3 py-1 rounded-lg">AI/ML Expert</span>
+                <span className="bg-gray-700 text-sm px-3 py-1 rounded-lg">AI/ML Engineer</span>
                 <span className="bg-gray-700 text-sm px-3 py-1 rounded-lg">Data Scientist</span>
-                <span className="bg-gray-700 text-sm px-3 py-1 rounded-lg">MLOps Engineer</span>
+                <span className="bg-gray-700 text-sm px-3 py-1 rounded-lg">Generative AI Researcher</span>
                 </div>
             </div>
             </motion.div>
