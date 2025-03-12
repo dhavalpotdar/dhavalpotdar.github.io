@@ -33,8 +33,8 @@ const Navbar = () => {
   }, [location, navigate]);
 
   return (
-    <nav className="flex justify-between items-center p-6 bg-gradient-to-b from-black via-gray-900 to-black text-white shadow-lg">
-      <h1 className="text-xl font-bold text-white">Dhaval Potdar | Portfolio</h1>
+    <nav className="fixed top-0 left-0 w-full z-50 flex justify-between items-center p-6 bg-black bg-opacity-90 backdrop-blur-md text-white shadow-md">
+      <h1 className="text-xl font-bold text-white">Dhaval Potdar</h1>
       <div className="space-x-6">
         <Link to="/" className="text-white hover:text-gray-400">Home</Link>
         <Link to="/about" className="text-white hover:text-gray-400">About</Link>

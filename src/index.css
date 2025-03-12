@@ -39,6 +39,7 @@ a:hover {
 /* Apply shiny black effect to the background */
 body {
   @apply bg-gradient-to-b from-black via-gray-900 to-black text-white;
+  padding-top: 55px; /* Adjust based on your navbar height */
 }
 
 /* Ensure all sections, nav, and footer follow the same glossy theme */

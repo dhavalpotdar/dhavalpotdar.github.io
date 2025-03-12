@@ -6,8 +6,8 @@ import { SiArxiv, SiIeee } from "react-icons/si"; // Import ArXiv & IEEE icons
 const featuredMedia = [
     {
         type: "publication",
-        title: "Graph Neural Networks for Social Network Analysis",
-        abstract: "This paper explores the use of Graph Neural Networks (GNNs) in modeling complex social network interactions...",
+        title: "Publication with Meta: A Systematic Review of Open Datasets used in Text-to-Image (T2I) Gen AI Model Safety",
+        abstract: "Novel research aimed at text-to-image (T2I) generative AI safety often relies on publicly available datasets for training and evaluation, making the quality and composition of these datasets crucial. This paper presents a comprehensive review of the key datasets used in the T2I research, detailing their collection methods, compositions, semantic and syntactic diversity of prompts...",
         citation: "D. Potdar, T. Bavalatti et al. “A Systematic Review of Open Datasets used in Text-to-Image (T2I) Gen AI Model Safety,” IEEE Access, Jan. 2025",
         thumbnail: "/assets/projects/Meta-Logo.png",
         arxiv: "https://arxiv.org/abs/2503.00020",
@@ -28,7 +28,7 @@ const featuredMedia = [
     // },
     {
       type: "linkedin",
-      title: "Mapping Home Prices for Student Wealth Distribution",
+      title: "Community Engaged Data Science: Mapping Home Prices for Student Wealth Distribution",
       url: "https://www.linkedin.com/pulse/mapping-home-prices-durham-county-dhaval-potdar",
       thumbnail: "/assets/media/DPS.png",
       excerpt: "With 57 schools under its belt and enrolling 32,000 students, Durham Public Schools (DPS) faced a significant challenge – how can we pinpoint which students need the most financial support to succeed in school?",
@@ -49,9 +49,9 @@ const featuredMedia = [
   const FeaturedMedia = () => {
     return (
       <section className="max-w-6xl mx-auto text-white py-12">
-        <h2 className="text-4xl font-bold text-center">Featured Media</h2>
+        <h2 className="text-5xl font-bold text-center">Highlights</h2>
         <p className="text-gray-400 mt-2 text-lg text-center">
-          A collection of my latest articles and videos.
+          Here are the works I'm most proud of...
         </p>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
           {featuredMedia.map((media, index) => (
