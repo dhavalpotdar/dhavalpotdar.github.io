@@ -7,7 +7,7 @@ const featuredMedia = [
     {
         type: "publication",
         title: "Publication with Meta: A Systematic Review of Open Datasets used in Text-to-Image (T2I) Gen AI Model Safety",
-        abstract: "Novel research aimed at text-to-image (T2I) generative AI safety often relies on publicly available datasets for training and evaluation, making the quality and composition of these datasets crucial. This paper presents a comprehensive review of the key datasets used in the T2I research, detailing their collection methods, compositions, semantic and syntactic diversity of prompts...",
+        abstract: "Abstract: Novel research aimed at text-to-image (T2I) generative AI safety often relies on publicly available datasets for training and evaluation, making the quality and composition of these datasets crucial. This paper presents a comprehensive review of the key datasets used in the T2I research, detailing their collection methods, compositions, semantic and syntactic diversity of prompts...",
         citation: "D. Potdar, T. Bavalatti et al. “A Systematic Review of Open Datasets used in Text-to-Image (T2I) Gen AI Model Safety,” IEEE Access, Jan. 2025",
         thumbnail: "/assets/projects/Meta-Logo.png",
         arxiv: "https://arxiv.org/abs/2503.00020",
@@ -55,7 +55,7 @@ const featuredMedia = [
         <p className="text-gray-400 mt-2 text-lg text-center">
           Here is the work I'm most proud of...
         </p>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 max-w-7xl mx-auto">
+        <div className="grid sm:grid-cols sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 max-w-7xl mx-auto">
           {featuredMedia.map((media, index) => (
             <div 
             key={index} 

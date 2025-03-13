@@ -1,36 +1,9 @@
 import { motion } from "framer-motion";
-import { FaGithub, FaYoutube, FaFilePdf, FaBook } from "react-icons/fa"; // Import icons
+import { FaGithub, FaYoutube, FaFilePdf, FaBook } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { projects } from "../pages/Projects"; // ✅ Import full projects array
 
-const featuredProjects = [
-  {
-    title: "MS Capstone: Text to Image Generative AI Safety with Meta",
-    description: "This study analyzes public datasets for T2I model safety, identifying gaps in harm coverage, bias, and ethical risks to improve dataset selection and model robustness. I reduced non-compliant output by 15% for Meta’s Emu diffusion models by curating 120K adversarial prompts and training content moderation classifiers. Additionally, I’m leading a large-scale crowdsourcing study on multilingual T2I safety, designing a full-stack platform to test 8 SOTA models for cultural biases across 10 languages.",
-    tags: ["Gen AI Safety", "Crowdsourcing"],
-    // github: "https://github.com/dhavalpotdar/interpretable-churn-prediction",
-    image: "/assets/projects/Meta-Logo.png",
-    publication: "https://ieeexplore.ieee.org/document/10877814",
-    url: "https://ieeexplore.ieee.org/document/10877814"
-  },
-  {
-    title: "Academic Chatbot using Graph RAG",
-    description:
-      "Duke ProfMatch is an AI-powered academic discovery tool that leverages Graph Retrieval-Augmented Generation (RAG) to help Duke students find professors aligned with their research interests. It integrates entity extraction, knowledge graph construction, and vector search using Neo4j to deliver intelligent faculty recommendations. The platform features an interactive graph-based UI, enhancing research exploration and engagement.",
-    tags: ["Generative AI", "Graph RAG", "Neo 4j"],
-    youtube: "https://youtu.be/z67WamqcfpY?si=jRWmJvSr464ZZUk5", // Only YouTube link
-    image: "/assets/projects/Duke ProfMatch.webp",
-    url: "https://youtu.be/z67WamqcfpY?si=jRWmJvSr464ZZUk5"
-  },
-  {
-    title: "Interpretable X-Ray Classification with ProtoTree",
-    description: "Interpretable X-Ray Classification leverages the Neural Prototype Tree (ProtoTree) to enhance model transparency in chest X-ray diagnostics. Unlike traditional CNN-based models that act as black boxes, ProtoTree integrates decision tree-based interpretability into its deep learning pipeline, enabling clinicians to understand why a model reaches a diagnosis. By improving model interpretability, this project supports faster, more reliable decision-making in healthcare, aiding radiologists in early disease detection while reducing diagnostic uncertainty.",
-    tags: ["PyTorch", "CNN", "Soft Decision Trees"],
-    github: "https://github.com/dhavalpotdar/prototree", // Only GitHub link
-    image: "/assets/projects/Interpretable X-Ray.webp",
-    report: "https://github.com/dhavalpotdar/prototree/blob/main/IDS705%20Final%20Project%20-%20Interpretable%20Image%20Classification.pdf",
-    url: "https://github.com/dhavalpotdar/prototree"
-  }
-];
+const featuredProjects = projects.slice(0, 3); // ✅ Dynamically select first 3 projects
 
 // Framer Motion Variants for staggered loading
 const containerVariants = {
@@ -61,7 +34,7 @@ const FeaturedProjects = () => {
         A selection of my top projects in AI & Data Science
       </p>
       <motion.div
-        className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 max-w-7xl mx-auto"
+        className="grid sm:grid-cols sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 max-w-7xl mx-auto"
         variants={containerVariants}
       >
         {featuredProjects.map((project, index) => (
@@ -107,7 +80,7 @@ const FeaturedProjects = () => {
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center space-x-2 text-blue-400 hover:text-blue-500"
+                  className="flex items-center space-x-2 text-white hover:text-blue-500"
                 >
                   <FaGithub className="text-2xl" />
                   <span>GitHub</span>
@@ -129,7 +102,7 @@ const FeaturedProjects = () => {
                   href={project.report}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center space-x-2 text-green-400 hover:text-green-500"
+                  className="flex items-center space-x-2 text-red-400 hover:text-green-500"
                 >
                   <FaFilePdf className="text-2xl" />
                   <span>Project Report</span>
@@ -148,7 +121,6 @@ const FeaturedProjects = () => {
               )}
             </div>
 
-            
           </motion.div>
           </a>
         ))}
@@ -164,7 +136,6 @@ const FeaturedProjects = () => {
       </Link>
     </div>
     </section>
-    
   );
 };
 
