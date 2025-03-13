@@ -39,17 +39,17 @@ const Footer = () => {
             <h3 className="text-md font-semibold">Connect</h3>
             <div className="flex items-center space-x-4 mt-2">
               {/* GitHub */}
-              <a href="https://github.com/yourgithub" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/dhavalpotdar" target="_blank" rel="noopener noreferrer">
                 <FaGithub className="text-2xl text-white hover:text-gray-400 transition" />
               </a>
 
               {/* LinkedIn */}
-              <a href="https://linkedin.com/in/yourlinkedin" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.linkedin.com/in/dhavalpotdar/" target="_blank" rel="noopener noreferrer">
                 <FaLinkedin className="text-2xl text-white hover:text-gray-400 transition" />
               </a>
 
               {/* Email */}
-              <a href="mailto:your.email@example.com">
+              <a href="mailto:dhavalspotdar@gmail.com">
                 <FaEnvelope className="text-2xl text-white hover:text-gray-400 transition" />
               </a>
             </div>

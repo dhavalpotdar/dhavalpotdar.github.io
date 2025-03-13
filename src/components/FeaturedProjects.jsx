@@ -9,7 +9,8 @@ const featuredProjects = [
     tags: ["Gen AI Safety", "Crowdsourcing"],
     // github: "https://github.com/dhavalpotdar/interpretable-churn-prediction",
     image: "/assets/projects/Meta-Logo.png",
-    publication: "https://ieeexplore.ieee.org/document/10877814"
+    publication: "https://ieeexplore.ieee.org/document/10877814",
+    url: "https://ieeexplore.ieee.org/document/10877814"
   },
   {
     title: "Academic Chatbot using Graph RAG",
@@ -18,6 +19,7 @@ const featuredProjects = [
     tags: ["Generative AI", "Graph RAG", "Neo 4j"],
     youtube: "https://youtu.be/z67WamqcfpY?si=jRWmJvSr464ZZUk5", // Only YouTube link
     image: "/assets/projects/Duke ProfMatch.webp",
+    url: "https://youtu.be/z67WamqcfpY?si=jRWmJvSr464ZZUk5"
   },
   {
     title: "Interpretable X-Ray Classification with ProtoTree",
@@ -25,7 +27,8 @@ const featuredProjects = [
     tags: ["PyTorch", "CNN", "Soft Decision Trees"],
     github: "https://github.com/dhavalpotdar/prototree", // Only GitHub link
     image: "/assets/projects/Interpretable X-Ray.webp",
-    report: "https://github.com/dhavalpotdar/prototree/blob/main/IDS705%20Final%20Project%20-%20Interpretable%20Image%20Classification.pdf"
+    report: "https://github.com/dhavalpotdar/prototree/blob/main/IDS705%20Final%20Project%20-%20Interpretable%20Image%20Classification.pdf",
+    url: "https://github.com/dhavalpotdar/prototree"
   }
 ];
 
@@ -55,13 +58,20 @@ const FeaturedProjects = () => {
     >
       <h2 className="text-5xl font-bold text-center">Featured Projects</h2>
       <p className="text-gray-400 mt-2 text-lg text-center">
-        A selection of my top projects in AI & Data Science.
+        A selection of my top projects in AI & Data Science
       </p>
       <motion.div
-        className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 max-w-6xl mx-auto"
+        className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 max-w-7xl mx-auto"
         variants={containerVariants}
       >
         {featuredProjects.map((project, index) => (
+          <a 
+          key={index} 
+          href={project.url} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="block transform transition duration-300 hover:scale-[1.02] text-white hover:text-white cursor-pointer"
+        >
           <motion.div
             key={index}
             className="border border-gray-700 bg-black p-6 rounded-lg shadow-lg flex flex-col"
@@ -71,7 +81,7 @@ const FeaturedProjects = () => {
             <img
               src={project.image}
               alt={project.title}
-              className="w-full h-48 object-cover rounded-lg mb-4 image-hover"
+              className="w-full h-48 object-cover rounded-lg mb-4"
             />
 
             {/* Project Details */}
@@ -140,7 +150,7 @@ const FeaturedProjects = () => {
 
             
           </motion.div>
-          
+          </a>
         ))}
       </motion.div>
 

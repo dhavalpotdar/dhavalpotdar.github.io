@@ -12,6 +12,7 @@ const featuredMedia = [
         thumbnail: "/assets/projects/Meta-Logo.png",
         arxiv: "https://arxiv.org/abs/2503.00020",
         ieee: "https://ieeexplore.ieee.org/document/10877814",
+        url: "https://ieeexplore.ieee.org/document/10877814",
       },
     {
       type: "youtube",
@@ -29,7 +30,7 @@ const featuredMedia = [
     {
       type: "linkedin",
       title: "Community Engaged Data Science: Mapping Home Prices for Student Wealth Distribution",
-      url: "https://www.linkedin.com/pulse/mapping-home-prices-durham-county-dhaval-potdar",
+      url: "https://www.linkedin.com/pulse/mapping-home-prices-across-durham-county-proxy-student-dhaval-potdar-v0zre",
       thumbnail: "/assets/media/DPS.png",
       excerpt: "With 57 schools under its belt and enrolling 32,000 students, Durham Public Schools (DPS) faced a significant challenge – how can we pinpoint which students need the most financial support to succeed in school?",
     },
@@ -49,13 +50,18 @@ const featuredMedia = [
   const FeaturedMedia = () => {
     return (
       <section id="featured-media" className="w-full bg-black text-white py-12">
+        <div className="max-w-7xl mx-auto text-white py-12">
         <h2 className="text-5xl font-bold text-center">Highlights</h2>
         <p className="text-gray-400 mt-2 text-lg text-center">
-          Here are the works I'm most proud of...
+          Here is the work I'm most proud of...
         </p>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 max-w-7xl mx-auto">
           {featuredMedia.map((media, index) => (
-            <div key={index} className="bg-black border border-gray-700 p-4 rounded-lg shadow-lg hover:shadow-2xl transition-shadow">
+            <div 
+            key={index} 
+            className="bg-black border border-gray-700 p-4 rounded-lg shadow-lg hover:scale-[1.03] transition-transform duration-300 cursor-pointer"
+            onClick={() => window.open(media.url, "_blank")} // Opens the URL in a new tab
+            >
               <h3 className="text-xl font-semibold mb-2">{media.title}</h3>
   
               {/* Render YouTube Video with Excerpt */}
@@ -81,7 +87,7 @@ const featuredMedia = [
                     <img
                       src={media.thumbnail}
                       alt={media.title}
-                      className="w-full h-48 object-cover rounded-lg mb-4 hover:opacity-90 transition-opacity image-hover"
+                      className="w-full h-48 object-cover rounded-lg mb-4 hover:opacity-90 transition-opacity"
                     />
                   </a>
                   <p className="text-gray-400 text-sm mb-3">{media.excerpt}</p>
@@ -105,7 +111,7 @@ const featuredMedia = [
                     <img
                     src={media.thumbnail}
                     alt={media.title}
-                    className="w-full h-48 object-cover rounded-lg mb-4 hover:opacity-90 transition-opacity image-hover"
+                    className="w-full h-48 object-cover rounded-lg mb-4 hover:opacity-90 transition-opacity"
                     />
                     <p className="text-gray-400 text-sm mb-3">{media.abstract}</p>
                     <p className="text-gray-500 text-xs italic">{media.citation}</p>
@@ -133,6 +139,7 @@ const featuredMedia = [
                 )}
             </div>
           ))}
+        </div>
         </div>
       </section>
     );

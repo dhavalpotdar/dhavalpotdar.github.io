@@ -6,7 +6,10 @@ import { faUserTie, faCode, faGraduationCap, faChevronDown, faChevronUp } from "
 import MotionWrapper from "../components/MotionWrapper"; // Import the wrapper
 import Skills from "../components/Skills";
 import Footer from "../components/Footer"; // Import Footer
-
+import { useLocation } from "react-router-dom";
+import WorkExperience from "../components/WorkExperience"; // Import Work Experience component
+import TeachingExperience from "../components/TeachingExperience";
+import Hobbies from "../components/Hobbies";
 
 const courses = [
     {
@@ -101,9 +104,22 @@ const courses = [
 
 
   const About = () => {
+    const location = useLocation();
+
     useEffect(() => {
-        window.scrollTo(0, 0); // Forces the page to scroll to the top on load
-      }, [])
+        // If there's a hash in the URL, scroll to that section
+        if (location.hash) {
+          setTimeout(() => {
+              const targetElement = document.getElementById(location.hash.replace("#", ""));
+              if (targetElement) {
+                  targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
+              }
+          }, 100);
+        } else {
+            // ✅ Force an immediate reset to the top of the page before animations
+            window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+        }
+    }, [location]);
     
     const [openDegree, setOpenDegree] = useState(null);
     const [openCourses, setOpenCourses] = useState({});
@@ -175,9 +191,9 @@ const courses = [
             </motion.div>
   
           {/* Professional Summary */}
-            <motion.div className="mt-10 bg-black border border-gray-700 p-6 rounded-lg shadow-lg" variants={itemVariants}>
-            <h2 className="text-2xl font-semibold mb-4 flex items-center">
-                <FontAwesomeIcon icon={faUserTie} className="mr-2 text-white text-2xl" />
+            <motion.div className="mt-10 p-6 rounded-lg shadow-lg" variants={itemVariants}>
+            <h2 className="text-3xl font-semibold mb-4 flex items-center">
+                <FontAwesomeIcon icon={faUserTie} className="mr-4 text-white text-3xl" />
                 Professional Summary
             </h2>
             <p className="text-gray-400">
@@ -187,74 +203,89 @@ const courses = [
             </motion.div>
   
           {/* Technical Skills */}
-            <motion.div className="mt-10 border border-gray-700 bg-black p-6 rounded-lg shadow-lg" variants={itemVariants}>
-            <h2 className="text-2xl font-semibold mb-4 flex items-center">
-                <FontAwesomeIcon icon={faCogs} className="mr- text-white text-2xl" /> {/* Changed icon */}
+            <motion.div className="mt-10 p-6 rounded-lg shadow-lg" variants={itemVariants}>
+            <h2 className="text-3xl font-semibold mb-4 flex items-center">
+                <FontAwesomeIcon icon={faCogs} className="mr-3 text-white text-3xl" /> {/* Changed icon */}
                 Technical Skills
             </h2>
             <Skills />
             </motion.div>
+        
+            {/* Work Experience Section */}
+            <motion.div className="mt-10 p-6 rounded-lg shadow-lg" variants={itemVariants}>
+            <WorkExperience />
+            </motion.div>
   
           {/* Education Section */}
-          {/* Education Section */}
-        <motion.div className="mt-10 border border-gray-700 bg-black p-6 rounded-lg shadow-lg" variants={itemVariants}>
-        <h2 className="text-2xl font-semibold flex items-center">
-            <FontAwesomeIcon icon={faGraduationCap} className="mr-3 text-white text-3xl" />
-            Education
-        </h2>
+            <motion.div className="mt-10 p-6 rounded-lg shadow-lg" variants={itemVariants}>
+            <h2 className="text-3xl font-semibold mb-4 flex items-center">
+                <FontAwesomeIcon icon={faGraduationCap} className="mr-3 text-white text-3xl" />
+                Education
+            </h2>
 
-  {courses.map((course, degreeIndex) => (
-    <motion.div 
-      key={degreeIndex} 
-      className="border border-gray-700 bg-black p-6 rounded-lg shadow-lg mt-6"
-      variants={itemVariants}
-    >
-      {/* Degree & Institution */}
-      <div className="mb-3">
-        <h3 className="text-xl font-bold">{course.title}</h3>
-        <p className="text-gray-400">
-          {course.institution} <span className="text-gray-500">| {course.year}</span>
-        </p>
-      </div>
-    
-    
-      <p>Coursework (click to see details):</p>
-      {/* <div className="mt-2 flex flex-wrap gap-2">
-        {course.honors.map((honor, i) => (
-          <span key={i} className="bg-gray-800 text-sm px-3 py-1 rounded-lg text-gray-300 border border-gray-600">
-            {honor}
-          </span>
-        ))}
-      </div> */}
-
-      {/* Coursework List - Styled as Tags */}
-      <div className="mt-4 flex flex-wrap gap-2">
-        {course.details.map((detail, courseIndex) => {
-          const currentKey = `${degreeIndex}-${courseIndex}`; // Ensure string key
-          return (
-            <div 
-              key={courseIndex} 
-              className={`bg-black text-gray-300 px-3 py-1 rounded-lg border border-gray-600 text-sm cursor-pointer transition duration-200 hover:bg-gray-700 
-                ${openCourses === currentKey ? "bg-gray-700" : ""}`}  // Highlight selected item
-              onClick={() => setOpenCourses(openCourses === currentKey ? null : currentKey)}
-            >
-              {detail.name}
+          {courses.map((course, degreeIndex) => (
+          <motion.div 
+              key={degreeIndex} 
+              id={course.id} // Ensure this matches the ID in MiniAbout
+              className="border border-gray-700 bg-black p-6 rounded-lg shadow-lg mt-6"
+              variants={itemVariants}
+          >
+            {/* Degree & Institution */}
+            <div className="mb-3">
+              <h3 className="text-xl font-bold">{course.title}</h3>
+              <p className="text-gray-400">
+                {course.institution} <span className="text-gray-500">| {course.year}</span>
+              </p>
             </div>
-          );
-        })}
-      </div>
+    
+    
+            <p>Coursework (click to see details):</p>
+            {/* <div className="mt-2 flex flex-wrap gap-2">
+              {course.honors.map((honor, i) => (
+                <span key={i} className="bg-gray-800 text-sm px-3 py-1 rounded-lg text-gray-300 border border-gray-600">
+                  {honor}
+                </span>
+              ))}
+            </div> */}
 
-      {/* Course Descriptions - Show Only if Expanded */}
-      {typeof openCourses === "string" && openCourses.includes(`${degreeIndex}-`) && (
-        <motion.div className="mt-4 bg-black p-4 rounded-lg border border-gray-600" variants={itemVariants}>
-          <p className="text-gray-400 text-sm">
-            {course.details.find((detail, courseIndex) => openCourses === `${degreeIndex}-${courseIndex}`)?.description}
-          </p>
+            {/* Coursework List - Styled as Tags */}
+            <div className="mt-4 flex flex-wrap gap-2">
+              {course.details.map((detail, courseIndex) => {
+                const currentKey = `${degreeIndex}-${courseIndex}`; // Ensure string key
+                return (
+                  <div 
+                    key={courseIndex} 
+                    className={`bg-black text-gray-300 px-3 py-1 rounded-lg border border-gray-600 text-sm cursor-pointer transition duration-200 hover:bg-gray-700 
+                      ${openCourses === currentKey ? "bg-gray-700" : ""}`}  // Highlight selected item
+                    onClick={() => setOpenCourses(openCourses === currentKey ? null : currentKey)}
+                  >
+                    {detail.name}
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Course Descriptions - Show Only if Expanded */}
+            {typeof openCourses === "string" && openCourses.includes(`${degreeIndex}-`) && (
+              <motion.div className="mt-4 bg-black p-4 rounded-lg border border-gray-600" variants={itemVariants}>
+                <p className="text-gray-400 text-sm">
+                  {course.details.find((detail, courseIndex) => openCourses === `${degreeIndex}-${courseIndex}`)?.description}
+                </p>
+              </motion.div>
+            )}
+
         </motion.div>
-      )}
-    </motion.div>
-  ))}
-</motion.div>
+      ))}
+      </motion.div>
+
+      
+      <motion.div className="mt-10 p-6 rounded-lg shadow-lg" variants={itemVariants}>
+      <TeachingExperience />
+      </motion.div>
+
+      <motion.div className="mt-10 p-6 rounded-lg shadow-lg" variants={itemVariants}>
+      <Hobbies />
+      </motion.div>
         
       </motion.div>
         <Footer />
