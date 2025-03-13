@@ -35,6 +35,16 @@ export const projects = [
     image: "/assets/projects/GCN.webp",
     // report: "https://github.com/dhavalpotdar/interpretable-churn-prediction/blob/main/InterpretableChurnPredictionReport.pdf"
   },
+
+  {
+    title: "MS Capstone: Text to Image Generative AI Safety with Meta",
+    description: "This study analyzes public datasets for T2I model safety, identifying gaps in harm coverage, bias, and ethical risks to improve dataset selection and model robustness. I reduced non-compliant output by 15% for Meta’s Emu diffusion models by curating 120K adversarial prompts and training content moderation classifiers. Additionally, I’m leading a large-scale crowdsourcing study on multilingual T2I safety, designing a full-stack platform to test 8 SOTA models for cultural biases across 10 languages.",
+    tags: ["Gen AI Safety", "Crowdsourcing"],
+    // github: "https://github.com/dhavalpotdar/interpretable-churn-prediction",
+    image: "/assets/projects/Meta-Logo.png",
+    publication: "https://ieeexplore.ieee.org/document/10877814",
+    url: "https://ieeexplore.ieee.org/document/10877814"
+    },
   {
     title: "Interpretable Churn Prediction",
     description: "Interpretable Churn Prediction applies interpretable machine learning techniques to predict customer churn while providing actionable insights for decision-makers. Unlike traditional black-box models, this project utilizes Globally Optimized Sparse Decision Trees (GOSDT), Generalized Additive Models (GAMs), Sparse Generalized Linear Models (L0Learn), and Explainable Boosting Machines (EBMs) to balance accuracy and transparency. ",
@@ -64,16 +74,6 @@ export const projects = [
     image: "/assets/projects/Diabetic Retinopathy.webp",
     // youtube: "https://www.loom.com/share/ef9fba9169fa40ad857f48f97426e4d9?sid=786dc464-85f5-48d0-a560-6f0ad33bc28a"
   },
-
-  {
-    title: "MS Capstone: Text to Image Generative AI Safety with Meta",
-    description: "This study analyzes public datasets for T2I model safety, identifying gaps in harm coverage, bias, and ethical risks to improve dataset selection and model robustness. I reduced non-compliant output by 15% for Meta’s Emu diffusion models by curating 120K adversarial prompts and training content moderation classifiers. Additionally, I’m leading a large-scale crowdsourcing study on multilingual T2I safety, designing a full-stack platform to test 8 SOTA models for cultural biases across 10 languages.",
-    tags: ["Gen AI Safety", "Crowdsourcing"],
-    // github: "https://github.com/dhavalpotdar/interpretable-churn-prediction",
-    image: "/assets/projects/Meta-Logo.png",
-    publication: "https://ieeexplore.ieee.org/document/10877814",
-    url: "https://ieeexplore.ieee.org/document/10877814"
-    },
 
   {
     title: "Portfolio Website",
@@ -117,7 +117,7 @@ const Projects = () => {
         >
           <h2 className="text-5xl font-bold text-center">Projects</h2>
           <p className="text-gray-400 mt-2 text-lg text-center">
-            A collection of my documented AI/ML projects.
+            A collection of my documented AI/ML projects
           </p>
           <motion.div
             className="grid sm:grid-cols sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 max-w-6xl mx-auto"

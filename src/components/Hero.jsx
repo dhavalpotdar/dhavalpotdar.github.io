@@ -31,7 +31,7 @@ const Hero = () => {
 
   return (
     <motion.section
-      className="h-screen flex flex-col items-center justify-center text-center bg-black text-white relative"
+      className="min-h-screen flex flex-col items-center justify-center text-center bg-black text-white relative px-4 sm:px-8"
       initial="hidden"
       animate="visible"
       variants={containerVariants}
@@ -45,11 +45,11 @@ const Hero = () => {
       />
       
       {/* Name & Title */}
-      <motion.h1 className="text-6xl font-bold mt-4" variants={itemVariants}>
+      <motion.h1 className="text-4xl sm:text-6xl md:text-6xl font-bold mt-4" variants={itemVariants}>
         Hi, I'm Dhaval Potdar
       </motion.h1>
       <motion.p className="text-xl text-gray-400 mt-2" variants={itemVariants}>
-        Data Scientist | AI/ML Engineer | Generative AI
+        Data Scientist | AI/ML Engineer | Generative AI Evangelist
       </motion.p>
 
       {/* Buttons Section */}
