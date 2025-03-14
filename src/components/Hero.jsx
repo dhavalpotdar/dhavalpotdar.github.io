@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
-import { FaChevronDown } from "react-icons/fa";
+import { FaChevronDown,  FaEnvelope, FaLinkedin  } from "react-icons/fa";
 import { Link } from "react-router-dom";
+
 // Animation Variants
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -58,8 +59,17 @@ const Hero = () => {
           href="mailto:dhavalspotdar@gmail.com"
           className="px-6 py-3 bg-white text-black font-medium rounded-lg shadow-md transition hover:bg-gray-200"
         >
-          Email Me
+          <FaEnvelope className="text-xl" />
         </a>
+
+        <a
+          href="https://www.linkedin.com/in/dhavalpotdar/"
+          className="px-6 py-3 bg-white text-black font-medium rounded-lg shadow-md transition hover:bg-gray-200"
+        >
+          <FaLinkedin className="text-xl" />
+        </a>
+      
+
         <Link
           to="/projects"
           className="px-6 py-3 border border-white text-white font-medium rounded-lg shadow-md transition hover:bg-gray-800"
