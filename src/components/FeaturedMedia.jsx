@@ -1,6 +1,7 @@
 import React from "react";
 import { FaLinkedin, FaExternalLinkAlt, FaMedium } from "react-icons/fa"; // Import LinkedIn & external link icons
 import { SiArxiv, SiIeee } from "react-icons/si"; // Import ArXiv & IEEE icons
+import { motion } from "framer-motion";
 
 
 const featuredMedia = [
@@ -46,19 +47,37 @@ const featuredMedia = [
     // }
   ];
 
+  // Framer Motion Variants for staggered loading
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3, // Delays each child animation
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 0 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
 
   const FeaturedMedia = () => {
     return (
-      <section id="featured-media" className="w-full bg-black text-white py-12">
+      <motion.section id="featured-media" className="w-full bg-black text-white py-12" variants={containerVariants} initial="hidden" whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}>
         <div className="max-w-7xl mx-auto text-white py-12">
         <h2 className="text-5xl font-bold text-center">Highlights</h2>
         <p className="text-gray-400 mt-2 text-lg text-center">
           Here is the work I'm most proud of...
         </p>
-        <div className="grid sm:grid-cols sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 max-w-7xl mx-auto">
+        <motion.div variants={containerVariants} className="grid sm:grid-cols sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 max-w-7xl mx-auto">
           {featuredMedia.map((media, index) => (
-            <div 
+            <motion.div 
             key={index} 
+            variants={itemVariants}
             className="bg-black border border-gray-700 p-4 rounded-lg shadow-lg hover:scale-[1.03] transition-transform duration-300 cursor-pointer"
             onClick={() => window.open(media.url, "_blank")} // Opens the URL in a new tab
             >
@@ -137,11 +156,11 @@ const featuredMedia = [
                     Your browser does not support the video tag.
                 </video>
                 )}
-            </div>
+            </motion.div>
           ))}
+        </motion.div>
         </div>
-        </div>
-      </section>
+      </motion.section>
     );
   };
   

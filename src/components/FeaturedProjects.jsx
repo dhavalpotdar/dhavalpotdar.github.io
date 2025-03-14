@@ -1,7 +1,8 @@
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 import { FaGithub, FaYoutube, FaFilePdf, FaBook } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { projects } from "../pages/Projects"; // ✅ Import full projects array
+import { motion } from "framer-motion";
 
 const featuredProjects = projects.slice(0, 3); // ✅ Dynamically select first 3 projects
 
@@ -23,12 +24,13 @@ const itemVariants = {
 
 const FeaturedProjects = () => {
   return (
-    <section
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      className="bg-black text-white p-6 md:p-12"
-    >
+    <motion.section
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }} // Trigger when 20% is in view
+        className="bg-black text-white p-6 md:p-12"
+      >
       <h2 className="text-5xl font-bold text-center">Featured Projects</h2>
       <p className="text-gray-400 mt-2 text-lg text-center">
         A selection of my top projects in AI & Data Science
@@ -135,7 +137,7 @@ const FeaturedProjects = () => {
         View All Projects →
       </Link>
     </div>
-    </section>
+    </motion.section>
   );
 };
 
