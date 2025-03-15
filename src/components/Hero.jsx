@@ -50,7 +50,7 @@ const Hero = () => {
         Hi, I'm Dhaval Potdar
       </motion.h1>
       <motion.p className="text-xl text-gray-400 mt-2" variants={itemVariants}>
-        Data Scientist | AI/ML Engineer | Generative AI Evangelist
+        Data Scientist | AI/ML Engineer | Generative AI Specialist
       </motion.p>
 
       {/* Buttons Section */}

@@ -19,7 +19,7 @@ const MiniAbout = () => {
              Shaping the conversation around AI Safety and Data Science for good
           </h2>
           <p className="text-gray-400 mt-3 text-lg">
-          I’m a Data Scientist with 5 years of experience and a Master’s in Data Science from Duke University, passionate about building scalable AI solutions where safety isn’t an afterthought — it’s a priority. I’ve taken multi-million dollar machine learning projects from prototyping to production, blending technical expertise with a knack for translating complex AI into real business impact. For me, AI isn’t just about algorithms — it’s about solving real problems, driving decisions, and making technology work for people.
+          I’m a Data Scientist with 5 years of experience delivering end-to-end machine learning applications with a passion for building scalable AI solutions where safety isn’t an afterthought — it’s a priority. I’ve taken multi-million dollar machine learning projects from prototyping to production, blending technical expertise with a knack for translating complex AI into real business impact. For me, AI isn’t just about algorithms — it’s about solving real problems, driving decisions, and making technology work for people.
           </p>
 
           {/* Skill Tags */}

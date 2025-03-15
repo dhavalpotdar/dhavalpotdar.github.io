@@ -1,5 +1,5 @@
 // import { motion } from "framer-motion";
-import { FaGithub, FaYoutube, FaFilePdf, FaBook } from "react-icons/fa";
+import { FaGithub, FaYoutube, FaFilePdf, FaBook, FaMedium } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { projects } from "../pages/Projects"; // ✅ Import full projects array
 import { motion } from "framer-motion";
@@ -110,6 +110,19 @@ const FeaturedProjects = () => {
                   <span>Project Report</span>
                 </a>
               )}
+
+              {project.medium && (
+                <a
+                  href={project.medium}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 text-white hover:text-green-500"
+                >
+                  <FaMedium className="text-2xl" />
+                  <span>Medium</span>
+                </a>
+              )}
+
               {project.publication && (
                 <a
                   href={project.publication}

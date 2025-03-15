@@ -178,7 +178,7 @@ const courses = [
             <div className="text-center md:text-left">
                 <h1 className="text-4xl font-bold">Dhaval Potdar</h1>
                 <p className="text-lg text-gray-400 mt-2">
-                ML Geek and a Generative AI Evangelist
+                ML Geek and a Generative AI Specialist
                 </p>
 
                 {/* Tag Labels */}
@@ -197,8 +197,7 @@ const courses = [
                 Professional Summary
             </h2>
             <p className="text-gray-400">
-                I am a Data Scientist and AI/ML Engineer with a strong background in cloud solutions, large-scale analytics, and generative AI. 
-                I specialize in optimizing AI-driven systems and building scalable data pipelines.
+            I am a Data Scientist and AI/ML Engineer with a strong background in machine learning and generative AI. I focus on optimizing AI systems and building scalable data pipelines. My passion lies in making AI accessible and safe, ensuring it benefits everyone, tackles real-world challenges, and respects diverse social and cultural values.
             </p>
             </motion.div>
   
