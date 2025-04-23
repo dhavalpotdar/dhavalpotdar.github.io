@@ -56,8 +56,8 @@ export const projects = [
   },
   {
     title: "Bayesian Multi-Armed Bandits",
-    description: "A Python implementation of Bayesian Bandit Testing, an advanced A/B testing method that dynamically allocates traffic based on performance. The project includes implementations of classic hypothesis testing, Bayesian A/B testing, and Bayesian Bandit testing, with comprehensive visualizations and performance comparisons.",
-    tags: ["Bayesian Statistics", "A/B Testing", "Python", "Jupyter"],
+    description: "This project implements Bayesian Bandit Testing in Python—an adaptive alternative to traditional A/B testing that reallocates traffic in real time using Thompson Sampling. It compares classic hypothesis testing, Bayesian A/B testing, and Bayesian Multi-Armed Bandits, with visualizations of traffic allocation, convergence, and regret. Simulations over 300-day campaigns showed up to a 20% gain in effective conversion rate and 3x faster adaptation to shifting user preferences, demonstrating the advantages of bandits in dynamic, data-driven environments.",
+    tags: ["Bayesian Statistics", "A/B Testing", "Multi-Armed Bandits"],
     github: "https://github.com/dhavalpotdar/bayesian-multi-armed-bandits",
     url: "https://github.com/dhavalpotdar/bayesian-multi-armed-bandits",
     image: "/assets/projects/bayesian mab.png",
