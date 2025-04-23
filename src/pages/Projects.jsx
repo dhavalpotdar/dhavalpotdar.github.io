@@ -39,7 +39,7 @@ export const projects = [
   {
     title: "MS Capstone: Text to Image Generative AI Safety with Meta",
     description: "This study analyzes public datasets for T2I model safety, identifying gaps in harm coverage, bias, and ethical risks to improve dataset selection and model robustness. I reduced non-compliant output by 15% for Meta’s Emu diffusion models by curating 120K adversarial prompts and training content moderation classifiers. Additionally, I’m leading a large-scale crowdsourcing study on multilingual T2I safety, designing a full-stack platform to test 8 SOTA models for cultural biases across 10 languages.",
-    tags: ["Gen AI Safety", "Crowdsourcing"],
+    tags: ["Gen AI Safety", "Crowdsourcing", "Red Teaming"],
     // github: "https://github.com/dhavalpotdar/interpretable-churn-prediction",
     image: "/assets/projects/Meta-Logo.png",
     publication: "https://ieeexplore.ieee.org/document/10877814",
@@ -54,7 +54,15 @@ export const projects = [
     image: "/assets/projects/Interpretable Churn.webp",
     report: "https://github.com/dhavalpotdar/interpretable-churn-prediction/blob/main/InterpretableChurnPredictionReport.pdf"
   },
-
+  {
+    title: "Bayesian Multi-Armed Bandits",
+    description: "A Python implementation of Bayesian Bandit Testing, an advanced A/B testing method that dynamically allocates traffic based on performance. The project includes implementations of classic hypothesis testing, Bayesian A/B testing, and Bayesian Bandit testing, with comprehensive visualizations and performance comparisons.",
+    tags: ["Bayesian Statistics", "A/B Testing", "Python", "Jupyter"],
+    github: "https://github.com/dhavalpotdar/bayesian-multi-armed-bandits",
+    url: "https://github.com/dhavalpotdar/bayesian-multi-armed-bandits",
+    image: "/assets/projects/bayesian mab.png",
+    report: "https://github.com/dhavalpotdar/bayesian-multi-armed-bandits/blob/main/pdf/Bayesian%20Bandits%20Project.pdf"
+  },
   {
     title: "Sentiment Analysis Application with Transformers",
     description: "Sentiment Analysis with Transformers leverages Hugging Face's pre-trained transformer models to perform efficient sentiment classification using transfer learning on textual data. The application is built with Flask, where the model is instantiated via Hugging Face's pipeline module for inference. ",
@@ -85,6 +93,7 @@ export const projects = [
     image: "/assets/projects/Portfolio.png",
     // report: "https://github.com/dhavalpotdar/interpretable-churn-prediction/blob/main/InterpretableChurnPredictionReport.pdf"
   },
+  
 ];
 
 // Framer Motion Variants for staggered loading
